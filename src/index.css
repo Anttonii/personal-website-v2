@@ -50,6 +50,14 @@ a:hover {
     overflow-y: hidden;
     overflow-x: hidden;
     scrollbar-gutter: stable;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .tab-container {
+        scrollbar-gutter: stable;
+        border: 1px solid white;
+    }
 }
 
 .divider {
