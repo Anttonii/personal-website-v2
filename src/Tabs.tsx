@@ -16,10 +16,10 @@ export function getInformationTab() {
             </p>
             <div class="flex md:flex-row justify-center gap-1">
                 <div class="align-left md:mx-12 mx-auto">
-                    <a href="https://leetcode.com/u/Anttoni/" target="_blank">Leetcode</a>
+                    <a href="https://leetcode.com/u/Anttoni/" target="_blank" class="p-2">Leetcode</a>
                 </div>
                 <div class="align-right md:mx-12 mx-auto">
-                    <a href="https://codeforces.com/profile/Anttonii" target="_blank"
+                    <a href="https://codeforces.com/profile/Anttonii" target="_blank" class="p-2"
                     >Codeforces</a>
                 </div>
             </div>
@@ -66,15 +66,11 @@ export function getEducationTab() {
 export function getExperienceTab() {
     return (
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
-            <p>Experience content</p>
-        </div>
-    )
-}
-
-export function getInterestsTab() {
-    return (
-        <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
-            <p>Interests content</p>
+            <div class="flex flex-row justify-between">
+                <p class="text-md">Sanoma</p>
+                <p class="text-sm">09.2025 - Present</p>
+            </div>
+            <div class="divider" />
         </div>
     )
 }

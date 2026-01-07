@@ -4,9 +4,8 @@ export type TabListButton = {
 }
 
 export const TabIds = {
-  Information: 1,
-  Education: 2,
-  Experience: 3,
-  Interests: 4,
-  Projects: 5,
+  Information: 0,
+  Experience: 1,
+  Projects: 2,
+  Education: 3,
 }

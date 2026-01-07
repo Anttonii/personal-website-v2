@@ -1,8 +1,10 @@
-import { getEducationTab, getExperienceTab, getInformationTab, getInterestsTab, getProjectsTab } from './Tabs';
+import { getEducationTab, getExperienceTab, getInformationTab, getProjectsTab } from './Tabs';
 import { type TabListButton, TabIds } from './types';
 import { createSignal, type Component, For, Show } from 'solid-js';
+import { Fa } from 'solid-fa';
+import { faDiscord, faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
-const [selectedTabId, setSelectedTabId] = createSignal(1);
+const [selectedTabId, setSelectedTabId] = createSignal(TabIds.Information);
 const [menuOpen, setMenuOpen] = createSignal(false);
 
 function showText(id: number) {
@@ -13,8 +15,6 @@ function showText(id: number) {
       return getEducationTab();
     case TabIds.Experience:
       return getExperienceTab();
-    case TabIds.Interests:
-      return getInterestsTab();
     case TabIds.Projects:
       return getProjectsTab();
     default:
@@ -34,7 +34,7 @@ function createButtonList(buttons: TabListButton[]) {
           classList={{
             'active-button': selectedTabId() === item.id,
             'default-button': selectedTabId() !== item.id,
-            'md:mt-8': item.id === 1,
+            'md:mt-8': item.id === 0,
             'md:ml-8': true,
             'w-full md:w-auto text-left p-2 md:p-0': true,
           }}
@@ -52,21 +52,17 @@ const tabButtonList: TabListButton[] = [
     text: "Information"
   },
   {
-    id: TabIds.Education,
-    text: "Education"
-  },
-  {
     id: TabIds.Experience,
     text: "Experience"
   },
   {
-    id: TabIds.Interests,
-    text: "Interests"
-  },
-  {
     id: TabIds.Projects,
     text: "Projects"
-  }
+  },
+  {
+    id: TabIds.Education,
+    text: "Education"
+  },
 ]
 
 const App: Component = () => {
@@ -89,7 +85,34 @@ const App: Component = () => {
         <div class="md:w-1/2 w-full flex content">
           {showText(selectedTabId())}
         </div>
-        <div class="w-1/4 flex content"></div>
+        <div class="w-1/4 flex flex-col content gap-2">
+          <div class="flex justify-center mx-auto mt-8">
+            <img src="/images/me.png" />
+          </div>
+          <div class="divider" />
+          <div class="flex flex-col flex-wrap gap-2 w-full">
+            <div class="flex flex-row pb-2 justify-center gap-2 lg:justify-between lg:mx-auto">
+              <a href="https://www.linkedin.com/in/anttoni-koivu-a55070230/" target="_blank" class="flex items-center gap-2 p-1">
+                <span class="text-3xl"><Fa icon={faLinkedin} /></span>
+                <span class="text-md">LinkedIn</span>
+              </a>
+              <a href="https://www.linkedin.com/in/anttoni-koivu-a55070230/" target="_blank" class="flex items-center gap-2 p-1">
+                <span class="text-3xl"><Fa icon={faGithub} /></span>
+                <span class="text-md">Github</span>
+              </a>
+            </div>
+            <div class="flex flex-row justify-center gap-4 lg:justify-between lg:mx-auto">
+              <div class="flex flex-row items-center gap-2">
+                <span class="text-3xl"><Fa icon={faDiscord} /></span>
+                <span class="text-md">Anttonii</span>
+              </div>
+              <div class="flex flex-row items-center gap-2">
+                <span class="text-3xl"><Fa icon={faTelegram} /></span>
+                <span class="text-md">Anttoniii</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="md:hidden grow flex flex-col px-4 py-4">
         <Show
