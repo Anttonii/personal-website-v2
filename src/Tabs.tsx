@@ -1,11 +1,29 @@
 import { Fa } from "solid-fa"
 import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
 
+import { createSignal } from "solid-js"
+
+const getCreetingMessage = () => {
+    const [time] = createSignal(new Date().getHours());
+    if (time() < 12) {
+        return "Good morning!";
+    } else if (time() < 18) {
+        return "Good afternoon!";
+    } else if (time() < 24 || time() < 6) {
+        return "Hi! Shouldn't you be sleeping?";
+    } else {
+        return "Good evening!";
+    }
+}
+
 export function getInformationTab() {
     return (
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <p class="text-sm tracking-tight pb-4">
-                Hi! I'm a 26 year old software developer located in Finland. I enjoy building
+                {getCreetingMessage()}
+                <br />
+                <br />
+                I'm a 26 year old software developer located in Finland. I enjoy building
                 software and solving problems. I'm especially interested in everything data
                 related and am currently studying Machine Learning and Data Science.
                 <br />
@@ -93,7 +111,7 @@ export function getProjectsTab() {
                 <h2 class="pb-3">
                     <a
                         href="https://github.com/Anttonii/archimago-bot"
-                        class="link-text"
+                        class="p-2"
                         target="_blank"
                     >Archimago<span class="text-md inline-flex align-baseline pl-2">
                             <Fa icon={faUpRightFromSquare} />
@@ -107,7 +125,7 @@ export function getProjectsTab() {
             <div class="divider"></div>
             <div>
                 <h2 class="pb-3">
-                    <a href="https://github.com/Anttonii/jaydee" class="link-text" target="_blank">
+                    <a href="https://github.com/Anttonii/jaydee" class="p-2" target="_blank">
                         Jaydee<span class="text-md inline-flex align-baseline pl-2">
                             <Fa icon={faUpRightFromSquare} />
                         </span>
@@ -123,7 +141,7 @@ export function getProjectsTab() {
                 <h2 class="pb-3">
                     <a
                         href="https://github.com/Anttonii/hullifier"
-                        class="link-text"
+                        class="p-2"
                         target="_blank"
                     >Hullifier<span class="text-md inline-flex pl-2">
                             <Fa icon={faUpRightFromSquare} />
