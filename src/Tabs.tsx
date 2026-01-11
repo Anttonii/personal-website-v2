@@ -1,3 +1,6 @@
+import { Fa } from "solid-fa"
+import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
+
 export function getInformationTab() {
     return (
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
@@ -68,9 +71,17 @@ export function getExperienceTab() {
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <div class="flex flex-row justify-between">
                 <p class="text-md">Sanoma</p>
-                <p class="text-sm">09.2025 - Present</p>
+                <p class="text-sm">04.2025 - Present</p>
             </div>
             <div class="divider" />
+            <div class="flex">
+                <p class="text-sm">
+                    Started as an intern in April of 2025, moved to a full-time Software Developer role in December of 2025.
+                    <br />
+                    <br />
+                    Main focus on AI-powered internal tooling for journalists. Developed and trained various machine learning models used for classifying news value and recommending images for an article.
+                </p>
+            </div>
         </div>
     )
 }
@@ -78,7 +89,52 @@ export function getExperienceTab() {
 export function getProjectsTab() {
     return (
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
-            <p>Projects content</p>
+            <div>
+                <h2 class="pb-3">
+                    <a
+                        href="https://github.com/Anttonii/archimago-bot"
+                        class="link-text"
+                        target="_blank"
+                    >Archimago<span class="text-md inline-flex align-baseline pl-2">
+                            <Fa icon={faUpRightFromSquare} />
+                        </span></a>
+                </h2>
+                <p class="text-sm tracking-tight">
+                    A discord chat bot that provides data and images of Sorcery TCG. Built for the
+                    Sorcery TCG Finland discord group.
+                </p>
+            </div>
+            <div class="divider"></div>
+            <div>
+                <h2 class="pb-3">
+                    <a href="https://github.com/Anttonii/jaydee" class="link-text" target="_blank">
+                        Jaydee<span class="text-md inline-flex align-baseline pl-2">
+                            <Fa icon={faUpRightFromSquare} />
+                        </span>
+                    </a>
+                </h2>
+                <p class="text-sm tracking-tight">
+                    Scrape and crawl internet with the use of a .json schema. Built to scrape data
+                    for machine learning related projects.
+                </p>
+            </div>
+            <div class="divider"></div>
+            <div>
+                <h2 class="pb-3">
+                    <a
+                        href="https://github.com/Anttonii/hullifier"
+                        class="link-text"
+                        target="_blank"
+                    >Hullifier<span class="text-md inline-flex pl-2">
+                            <Fa icon={faUpRightFromSquare} />
+                        </span>
+                    </a>
+                </h2>
+                <p class="text-sm tracking-tight">
+                    Visualizes convex hull solving algorithms in 2D. Currently working on extending
+                    functionality to 3D.
+                </p>
+            </div>
         </div>
     )
 }

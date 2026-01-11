@@ -87,7 +87,7 @@ const App: Component = () => {
         </div>
         <div class="w-1/4 flex flex-col content gap-2">
           <div class="flex justify-center mx-auto mt-8">
-            <img src="/images/me.png" />
+            <img src="/images/me.jpg" />
           </div>
           <div class="divider" />
           <div class="flex flex-col flex-wrap gap-2 w-full">
