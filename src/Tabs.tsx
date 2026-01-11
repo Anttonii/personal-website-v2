@@ -5,14 +5,16 @@ import { createSignal } from "solid-js"
 
 const getCreetingMessage = () => {
     const [time] = createSignal(new Date().getHours());
-    if (time() < 12) {
+    const currentTime = time();
+
+    if (currentTime >= 6 && currentTime < 12) {
         return "Good morning!";
-    } else if (time() < 18) {
+    } else if (currentTime >= 12 && currentTime < 18) {
         return "Good afternoon!";
-    } else if (time() < 24 || time() < 6) {
-        return "Hi! Shouldn't you be sleeping?";
-    } else {
+    } else if (currentTime >= 18 && currentTime < 22) {
         return "Good evening!";
+    } else {
+        return "Hi! Shouldn't you be sleeping?";
     }
 }
 
