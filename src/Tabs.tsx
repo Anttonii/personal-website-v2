@@ -3,7 +3,7 @@ import { faUpRightFromSquare } from "@fortawesome/free-solid-svg-icons"
 
 import { createSignal } from "solid-js"
 
-const getCreetingMessage = () => {
+const getGreetingMessage = () => {
     const [time] = createSignal(new Date().getHours());
     const currentTime = time();
 
@@ -22,7 +22,7 @@ export function getInformationTab() {
     return (
         <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <p class="text-sm tracking-tight pb-4">
-                {getCreetingMessage()}
+                {getGreetingMessage()}
                 <br />
                 <br />
                 I'm a 26 year old software developer located in Finland. I enjoy building
