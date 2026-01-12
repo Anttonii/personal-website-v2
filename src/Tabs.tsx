@@ -159,6 +159,33 @@ export function getProjectsTab() {
     )
 }
 
+const pablosBirthday = new Date("2020-02-28");
+const pumpulisBirthday = new Date("2020-10-03");
+
+const getTimeSince = (date: Date): string => {
+    const now = new Date();
+    const seconds = Math.floor((now.getTime() - date.getTime()) / 1000);
+
+    let years = 0, months = 0, days = 0;
+
+    let interval = seconds / (60 * 60 * 24 * 365);
+    if (interval >= 1) {
+        years = Math.floor(interval);
+    }
+
+    interval = seconds / (60 * 60 * 24 * 30.43);
+    if (interval >= 1) {
+        months = Math.floor(interval) % 12;
+    }
+
+    interval = seconds / (60 * 60);
+    if (interval >= 1) {
+        days = Math.floor(interval) % 30;
+    }
+
+    return `${years} years, ${months} months, ${days} days.`;
+}
+
 export function getPabloTab() {
     return (
         <div class="tab-container flex-col md:pt-8 pt-4 md:ml-6 gap-2 md:p-0 p-4 h-full">
@@ -167,7 +194,7 @@ export function getPabloTab() {
                 <img src="/images/pablo.jpg" class="my-2" />
             </div>
             <p class="text-sm tracking-tight">
-
+                Age: {getTimeSince(pablosBirthday)}
             </p>
         </div>
     );
@@ -181,7 +208,7 @@ export function getPumpuliTab() {
                 <img src="/images/pumpuli.jpg" class="py-2 max-w-1/2" />
             </div>
             <p class="text-sm tracking-tight">
-
+                Age: {getTimeSince(pumpulisBirthday)}
             </p>
         </div>
     );
