@@ -195,6 +195,8 @@ export function getPabloTab() {
             </div>
             <p class="text-sm tracking-tight">
                 Age: {getTimeSince(pablosBirthday)}
+                <br />
+                Breed: Unknown
             </p>
         </div>
     );
@@ -209,6 +211,8 @@ export function getPumpuliTab() {
             </div>
             <p class="text-sm tracking-tight">
                 Age: {getTimeSince(pumpulisBirthday)}
+                <br />
+                Breed: Lionhead
             </p>
         </div>
     );
