@@ -20,7 +20,7 @@ const getGreetingMessage = () => {
 
 export function getInformationTab() {
     return (
-        <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
+        <div class="tab-container flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <p class="text-sm tracking-tight pb-4">
                 {getGreetingMessage()}
                 <br />
@@ -52,7 +52,7 @@ export function getInformationTab() {
 
 export function getEducationTab() {
     return (
-        <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
+        <div class="tab-container flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <h2>Masters of Computer Science</h2>
             <div class="flex flex-wrap">
                 <div class="w-full basis-1/3 md:basis-2/3">
@@ -88,7 +88,7 @@ export function getEducationTab() {
 
 export function getExperienceTab() {
     return (
-        <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
+        <div class="tab-container flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <div class="flex flex-row justify-between">
                 <p class="text-md">Sanoma</p>
                 <p class="text-sm">04.2025 - Present</p>
@@ -108,7 +108,7 @@ export function getExperienceTab() {
 
 export function getProjectsTab() {
     return (
-        <div class="tab-container flex flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
+        <div class="tab-container flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
             <div>
                 <h2 class="pb-3">
                     <a
@@ -157,4 +157,32 @@ export function getProjectsTab() {
             </div>
         </div>
     )
+}
+
+export function getPabloTab() {
+    return (
+        <div class="tab-container flex-col md:pt-8 pt-4 md:ml-6 gap-2 md:p-0 p-4 h-full">
+            <div class="flex flex-col items-center overflow-hidden">
+                <h2>Pablo</h2>
+                <img src="/images/pablo.jpg" class="my-2" />
+            </div>
+            <p class="text-sm tracking-tight">
+
+            </p>
+        </div>
+    );
+}
+
+export function getPumpuliTab() {
+    return (
+        <div class="tab-container flex-col md:mt-8 mt-4 md:ml-6 mx-auto gap-2 md:p-0 p-4">
+            <div class="flex flex-col items-center">
+                <h2>Pumpuli</h2>
+                <img src="/images/pumpuli.jpg" class="py-2 max-w-1/2" />
+            </div>
+            <p class="text-sm tracking-tight">
+
+            </p>
+        </div>
+    );
 }

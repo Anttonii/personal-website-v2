@@ -1,11 +1,16 @@
-import { getEducationTab, getExperienceTab, getInformationTab, getProjectsTab } from './Tabs';
+import { getEducationTab, getExperienceTab, getInformationTab, getProjectsTab, getPabloTab, getPumpuliTab } from './Tabs';
 import { type TabListButton, TabIds } from './types';
-import { createSignal, type Component, For, Show } from 'solid-js';
+import { createSignal, type Component, For, Show, createEffect, createMemo } from 'solid-js';
 import { Fa } from 'solid-fa';
 import { faDiscord, faLinkedin, faGithub, faTelegram } from '@fortawesome/free-brands-svg-icons';
 
+import { useKeyDownEvent } from '@solid-primitives/keyboard';
+
 const [selectedTabId, setSelectedTabId] = createSignal(TabIds.Information);
 const [menuOpen, setMenuOpen] = createSignal(false);
+
+const [showPablo, setShowPablo] = createSignal(false);
+const [showPumpuli, setShowPumpuli] = createSignal(false);
 
 function showText(id: number) {
   switch (id) {
@@ -17,6 +22,10 @@ function showText(id: number) {
       return getExperienceTab();
     case TabIds.Projects:
       return getProjectsTab();
+    case TabIds.Pablo:
+      return getPabloTab();
+    case TabIds.Pumpuli:
+      return getPumpuliTab();
     default:
       return "No content available";
   }
@@ -25,7 +34,7 @@ function showText(id: number) {
 function createButtonList(buttons: TabListButton[]) {
   return (
     <For each={buttons}>
-      {(item) => (
+      {(item) => (<Show when={item.enabled}>
         <button
           onClick={() => {
             setSelectedTabId(item.id);
@@ -37,11 +46,12 @@ function createButtonList(buttons: TabListButton[]) {
             'md:mt-8': item.id === 0,
             'md:ml-8': true,
             'w-full md:w-auto text-left p-2 md:p-0': true,
+            'animate-fade-in': item.id === TabIds.Pablo || item.id === TabIds.Pumpuli,
           }}
         >
           {item.text}
         </button>
-      )}
+      </Show>)}
     </For>
   );
 }
@@ -49,21 +59,60 @@ function createButtonList(buttons: TabListButton[]) {
 const tabButtonList: TabListButton[] = [
   {
     id: TabIds.Information,
-    text: "Information"
+    text: "Information",
+    enabled: true,
   },
   {
     id: TabIds.Experience,
-    text: "Experience"
+    text: "Experience",
+    enabled: true,
   },
   {
     id: TabIds.Projects,
-    text: "Projects"
+    text: "Projects",
+    enabled: true,
   },
   {
     id: TabIds.Education,
-    text: "Education"
+    text: "Education",
+    enabled: true,
   },
 ]
+
+const hiddenButtonList = createMemo(() => [
+  {
+    id: TabIds.Pablo,
+    text: "Pablo",
+    enabled: showPablo(),
+  },
+  {
+    id: TabIds.Pumpuli,
+    text: "Pumpuli",
+    enabled: showPumpuli(),
+  }
+])
+
+const event = useKeyDownEvent();
+const lastCharacters: string[] = [];
+
+createEffect(() => {
+  const e = event()
+  if (e) {
+    lastCharacters.push(e.key.toLowerCase());
+
+    if (lastCharacters.length > 7) {
+      lastCharacters.shift();
+    }
+
+    if (lastCharacters.join('').includes('pablo')) {
+      setShowPablo(true);
+    }
+
+    if (lastCharacters.join('').includes('pumpuli')) {
+      setShowPumpuli(true);
+    }
+  }
+});
 
 const App: Component = () => {
   return (
@@ -79,8 +128,13 @@ const App: Component = () => {
         </div>
       </div>
       <div class="hidden md:flex flex-row h-full">
-        <div class="w-1/4 flex content flex-col gap-2 tracking-tight">
-          {createButtonList(tabButtonList)}
+        <div class="w-1/4 flex content justify-between my-auto h-full flex-col gap-2 tracking-tight">
+          <div class="flex flex-col gap-2">
+            {createButtonList(tabButtonList)}
+          </div>
+          <div class="flex flex-col gap-2 pb-8 w-3/4">
+            {createButtonList(hiddenButtonList())}
+          </div>
         </div>
         <div class="md:w-1/2 w-full flex content">
           {showText(selectedTabId())}
